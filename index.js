@@ -13,7 +13,11 @@ const Yargs = require('yargs')
         alias: 'p',
         describe: 'Clump distribution power',
     })
+    .option('step', {
+        describe: 'clump size step',
+    })
     .default("pow", 3, "(power of distribution)")
+    .default("step", 1, "clump size step")
     .help();
 const argv = Yargs
     .argv;
@@ -28,12 +32,13 @@ if (fileArgs.length < 2)
 }
 
 
-function config(size, min, max, pow)
+function config(size, min, max, pow, step)
 {
-    return (v) => min + Math.pow(1 - (v - 1) / (size - 1), pow) * (max - min);
+    const minSize =  size - Math.floor((size - 2)/step) * step;
+    return (v) => min + Math.pow(1 - (v - minSize) / (size - minSize), pow) * (max - min);
 }
 
-const { size, min, max, pow = 3 } = argv;
+const { size, min, max, pow = 3, step = 1 } = argv;
 
 
 if (size === undefined)
@@ -52,7 +57,7 @@ if (max === undefined)
     process.exit(1);
 }
 
-const getAmount = config(size, min, max, pow);
+const getAmount = config(size, min, max, pow, step);
 
 
 const Jimp = require("jimp");
