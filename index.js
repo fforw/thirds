@@ -63,7 +63,7 @@ const [ inFile, outFile ] = fileArgs;
 Jimp.read(inFile).then(img => {
     const { bitmap } = img;
 
-    for (let i=1; i <= size; i++)
+    for (let i=size; i > 1; i -= step)
     {
         const count = getAmount((i));
         console.log(count, "x size ", i, " clumps");
