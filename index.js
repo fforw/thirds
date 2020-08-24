@@ -73,8 +73,8 @@ Jimp.read(inFile).then(img => {
 
         for (let j = 0; j < count ; j++)
         {
-            const cx = Math.random() * (width - size);
-            const cy = Math.random() * (height - size);
+            const cx = (Math.random() * (width - size))|0;
+            const cy = (Math.random() * (height - size))|0;
 
             let sumR = 0;
             let sumG = 0;
