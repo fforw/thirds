@@ -121,12 +121,6 @@ Jimp.read(inFile).then(img => {
                     data[off + 1] = g;
                     data[off + 2] = b;
                     data[off + 3] = a;
-
-                    sumR += r*r;
-                    sumG += g*g;
-                    sumB += b*b;
-                    sumA += a;
-
                 }
                 lineOffset += width;
             }
