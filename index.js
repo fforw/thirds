@@ -10,7 +10,7 @@ const Yargs = require('yargs')
         describe: 'Min clump count',
     })
     .option('pow', {
-        alias: 'm',
+        alias: 'p',
         describe: 'Clump distribution power',
     })
     .default("pow", 3, "(power of distribution)")
