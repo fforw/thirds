@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const Yargs = require('yargs')
     .option('width', {
         alias: 'w',
